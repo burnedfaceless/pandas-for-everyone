@@ -6,3 +6,6 @@ df = pd.read_csv('gapminder.tsv', sep='\t')
 
 # get the data type of each column
 print(df.dtypes)
+
+# get more information about the DataFrame
+print(df.info())
