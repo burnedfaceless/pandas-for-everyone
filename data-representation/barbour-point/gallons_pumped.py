@@ -35,8 +35,8 @@ def main():
         # Establish a database connection
         connection = mysql.connector.connect(**db_config)
 
-        # Retrieve pump readings for the specified well ID
-        query = f"SELECT pump, date_of_reading FROM well_readings WHERE well_id = {well_id_to_query}"
+        # Retrieve the most recent 30 pump readings for the specified well ID
+        query = f"SELECT pump, date_of_reading FROM well_readings WHERE well_id = {well_id_to_query} ORDER BY date_of_reading DESC LIMIT 30"
         df = pd.read_sql(query, connection)
 
         # Calculate gallons pumped per day
@@ -47,7 +47,7 @@ def main():
 
         # Create a histogram
         plt.hist(df['gallons_per_day'], bins='auto', alpha=0.7, color='blue', edgecolor='black')
-        plt.title('Barbour Point Well Gallons Pumped Per All Time')
+        plt.title('Gallons Pumped Per Day Histogram')
         plt.xlabel('Gallons Per Day')
         plt.ylabel('Frequency')
         plt.show()
