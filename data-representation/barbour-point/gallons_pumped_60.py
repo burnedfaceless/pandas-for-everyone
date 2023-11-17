@@ -29,7 +29,7 @@ def main():
     }
 
     # Well ID for which pump readings need to be retrieved
-    well_id_to_query = 21  # Replace with the desired well ID
+    well_id_to_query = 29  # Replace with the desired well ID
 
     try:
         # Establish a database connection
@@ -47,7 +47,7 @@ def main():
 
         # Create a histogram
         plt.hist(df['gallons_per_day'], bins='auto', alpha=0.7, color='blue', edgecolor='black')
-        plt.title('Barbour Point Gallons Pumped Per Last 60 Days Histogram')
+        plt.title('Gallons Pumped Per Last 60 Days Histogram')
         plt.xlabel('Gallons Per Day')
         plt.ylabel('Frequency')
         plt.show()
